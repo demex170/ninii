@@ -252,7 +252,7 @@ footer{padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))}
 <div class="ok" id="ok"><div><div class="eb">შენი სიტყვა მივიღე</div><h2>ახლა ეს ყველაფერი<br><span class="grad">ჩვენია.</span></h2><p class="m" style="margin-top:26px">მადლობა, რომ შენი სიტყვა დამიტოვე.</p></div></div>
 
 <script>
-const CONFIG={recipient:"ნინი",sender:"დემეტრე",formspreeEndpoint:"",musicFile:"music.mp3"};
+const CONFIG={recipient:"ნინი",sender:"დემეტრე",formspreeEndpoint:"https://formspree.io/f/xwlpwawv",musicFile:"music.mp3"};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const ROOMS=[["შენი ღიმილი","ზოგჯერ მთელი დღის შეცვლა შეუძლია. სწორედ ამიტომ მახსოვს."],["შენი ხმა","შენი ხმა ჩემთვის სიმშვიდესთან ასოცირდება. ამიტომ მიყვარს მისი მოსმენა."],["რაც არასდროს მითქვამს","ზოგჯერ უფრო ხშირად მახსენდები, ვიდრე ამას გეუბნები. შენი სახელის დანახვაც საკმარისია, რომ გამეღიმოს."],["ჩემი საყვარელი შეგრძნება","ის მომენტი, როცა ვიცი, რომ ჩემს ცხოვრებაში არსებობ. უცნაურად მარტივი და ძალიან მნიშვნელოვანი."],["მომავალი","ზუსტად როგორი იქნება, არ ვიცი. მაგრამ შენთან დაკავშირებული მომავლის წარმოდგენა ყოველთვის მეღიმება."]];
 $("#mg").innerHTML=ROOMS.map((r,i)=>`<div class="glass" data-i="${i}"><small>ROOM 0${i+1}</small><h3>${r[0]}</h3><span>გახსნა →</span></div>`).join("");
