@@ -9,10 +9,11 @@
 <style>
 :root{--bg:#07030c;--rose:#f0a8ca;--gold:#e9c9a8;--vio:#8e4a9d;--txt:#eadbe6;--mut:#a793ab;--glass:#12081b;--bd:rgba(240,168,202,.16);--e:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);scroll-behavior:smooth}
-html{overflow-x:clip;overscroll-behavior-y:none;-webkit-text-size-adjust:100%}
-section{overflow-x:clip}
-#intro,#gate,#cur,.md,.ok{height:100lvh;touch-action:none}
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+main{overflow-x:clip}
+#intro,#gate,#cur,.md,.ok{height:100lvh;pointer-events:none}
+#intro:not(.hide),#gate:not(.off),#cur.run,.md.open,.ok.show{pointer-events:auto;touch-action:none}
+.md.open{touch-action:pan-y}
 #cv{width:100%;height:100%}
 body{color:var(--txt);font-family:"Noto Sans Georgian",sans-serif;-webkit-font-smoothing:antialiased}
 button,textarea{font:inherit;border:0}
@@ -45,8 +46,8 @@ button,textarea{font:inherit;border:0}
 #ip{display:block;height:100%;width:0;background:var(--gold);transition:width 1s var(--e)}
 #gate{position:fixed;inset:0;z-index:810;background:#040108;display:grid;place-items:center;text-align:center;padding:24px;transition:opacity 1s ease,visibility 1s}
 #gate.off{opacity:0;visibility:hidden}
-#cur{position:fixed;inset:0;z-index:780;pointer-events:none;visibility:hidden}
-#cur.run{visibility:visible;pointer-events:auto}
+#cur{position:fixed;inset:0;z-index:780;visibility:hidden}
+#cur.run{visibility:visible}
 .cp{position:absolute;left:0;right:0;height:50.5%;background:#050109;transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
 .ct{top:0;transform:translateY(-100%)}.cb{bottom:0;transform:translateY(100%)}
 #cur.in .cp{transform:none}
@@ -117,7 +118,7 @@ p.m{color:var(--mut);font-weight:300;line-height:2;font-size:15px}
 .sl span{display:block;margin-bottom:26px;color:#6e5c74;transition:color 1.2s}
 .sl.v span{color:#a58fa6}
 .sl .hi{color:var(--rose)}
-.cf h2{font-size:clamp(66px,18vw,190px);font-weight:700;line-height:1;margin-top:26px;}
+.cf h2{font-size:clamp(66px,18vw,190px);font-weight:700;line-height:1;margin-top:26px}
 textarea{width:100%;min-height:200px;padding:24px;resize:vertical;outline:0;background:transparent;color:#f4e4ed;font-size:15px;line-height:1.9}
 .rb{padding:6px;max-width:720px;margin:auto}
 .send{display:block;width:100%;margin-top:6px;min-height:52px;border-radius:99px;font-weight:700;font-size:14px;color:#1c0a22;cursor:pointer;background:linear-gradient(120deg,var(--gold),var(--rose),#cf78b1);background-size:200%;transition:.6s var(--e)}
@@ -329,4 +330,4 @@ $("#lf").onsubmit=async e=>{e.preventDefault();const m=$("#lm").value.trim(),fm=
 $("#ok").onclick=()=>$("#ok").classList.remove("show");
 </script>
 </body>
-</html>ს
+</html>
