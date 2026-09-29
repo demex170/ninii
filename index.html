@@ -10,7 +10,9 @@
 :root{--bg:#07030c;--rose:#f0a8ca;--gold:#e9c9a8;--vio:#8e4a9d;--txt:#eadbe6;--mut:#a793ab;--glass:#12081b;--bd:rgba(240,168,202,.16);--e:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);scroll-behavior:smooth}
-html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:clip;overscroll-behavior:none;touch-action:pan-y;-webkit-text-size-adjust:100%}
+section{overflow-x:clip}
+#intro,#gate,#cur,.md,.ok{height:100lvh;touch-action:none}
 #cv{width:100%;height:100%}
 body{color:var(--txt);font-family:"Noto Sans Georgian",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 button,textarea{font:inherit;border:0}
@@ -306,9 +308,9 @@ addEventListener("keydown",e=>e.key==="Escape"&&cm());
 
 /* music */
 const au=$("#au"),mt=$("#mt");let ms=false;
-function pm(){if(!CONFIG.musicFile)return;au.volume=0;au.play().then(()=>{ms=true;mt.classList.add("on");let v=0;const f=setInterval(()=>{v+=.02;au.volume=Math.min(v,.85);if(v>=.85)clearInterval(f)},120)}).catch(()=>{})}
+function pm(){if(!CONFIG.musicFile||!au.paused)return;au.volume=0;au.play().then(()=>{ms=true;mt.classList.add("on");let v=0;const f=setInterval(()=>{v+=.02;au.volume=Math.min(v,.85);if(v>=.85)clearInterval(f)},120)}).catch(()=>{})}
 mt.onclick=e=>{e.stopPropagation();if(au.paused)pm();else{au.pause();mt.classList.remove("on")}};
-$("#go").onclick=()=>{pm();hold=true;const c=$("#cur");c.classList.add("run");requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add("in")));
+$("#go").onclick=()=>{hold=true;const c=$("#cur");c.classList.add("run");requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add("in")));
  setTimeout(()=>scrollTo({top:$$("section")[1].offsetTop,behavior:"instant"}),1500);
  setTimeout(()=>{c.classList.remove("in");hold=false;$$(".rv").forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)e.classList.add("v")});burst(innerWidth/2,innerHeight*.6,60)},3000);
  setTimeout(()=>c.classList.remove("run"),4300)};
